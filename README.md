@@ -1,6 +1,6 @@
 # Base Module [![Build Status][travis-image]][travis-url]
 
-> Starting point for a base [Cartridge](https://github.com/cartridge/cartridge) module
+> Starting point for a SVG [Cartridge](https://github.com/cartridge/cartridge) module
 
 ## Setup for a new module
 [Create a new empty repository](https://github.com/new) for your expansion pack.
