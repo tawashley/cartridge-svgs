@@ -1,6 +1,7 @@
-# Base Module [![Build Status][travis-image]][travis-url]
+# Cartridge SVGs [![Build Status][travis-image]][travis-url]
 
-> Starting point for a SVG [Cartridge](https://github.com/cartridge/cartridge) module
+> SVG expansion pack for [Cartridge](https://github.com/cartridge/cartridge)
+
 
 ## Setup for a new module
 [Create a new empty repository](https://github.com/new) for your expansion pack.
