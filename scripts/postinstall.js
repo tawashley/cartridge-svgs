@@ -12,11 +12,11 @@ var TASK_NAME = 'svgs';
 // Transform function for adding paths
 function projectConfigAddPaths(config) {
 	if(!config.paths.src.hasOwnProperty(TASK_NAME)) {
-		config.paths.src[TASK_NAME]  = config.dirs.src  + '/example_dir/';
+		config.paths.src[TASK_NAME]  = config.dirs.src  + '/images/svgs/';
 	}
 
 	if(!config.paths.dest.hasOwnProperty(TASK_NAME)) {
-		config.paths.dest[TASK_NAME]  = config.dirs.dest  + '/example_dir/';
+		config.paths.dest[TASK_NAME]  = config.dirs.dest  + '/images/svgs/';
 	}
 
 	return config;
