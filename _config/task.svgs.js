@@ -20,7 +20,7 @@ function getTaskConfig(projectConfig) {
 		            },
 		           	"layout": "packed", // default - layout of svg in the sprite
 		           	"prefix": ".svgsprite--%s", // custom - prefix for svg classes
-		           	"dimensions": "__dimensions", // custom - suffix for dimensions class e.g. .svg--hamburger__dimensions
+		           	"dimensions": "__dimensions", // custom - suffix for dimensions class e.g. .svgsprite--hamburger__dimensions
 		           	"bust": true // default - cache busting
 		        }
 	    	}

@@ -30,29 +30,100 @@ Once installed, the config file `task.svgs.js` is created and stored in the _con
 ### Default config options
 
 ```
-var taskConfig = {
-		src: projectConfig.paths.src.svgs + '*.svg', // Source of SVGs
-		dest: projectConfig.paths.dest.svgs + '/_objects/_objects', // Output directory for SVGs
+	var taskConfig = {
+		svgSrc: projectConfig.paths.src.svgs + '**/*.svg',	// Where to look for SVGs within the project
+		outDir: '',											// Main output directory of all generated files unless otherwise specified by individual mode options (see mode details). The default of this is empty in favour of the individual mode output directory paths.
 
-		mode: {
-        	css: { // Activate the «css» mode
-            	dest: '_source/styles/_objects', // Output of SVG sprite CSS file
-            	render: {
-                	scss: true, // Activate SCSS output
-            	},
-            	example: false // Deactivate example HTML file
-        	},
-
-        	// Deactivated output modes
-        	view: false,
-        	defs: false,
-        	symbol: false,
-        	stack: false
-    	},
-	};
+		settings: {
+		    "dest": "", 												// Output directory of all generated files unless otherwise specified by individual mode options (see mode details). The default of this is empty in favour of the individual mode output directory paths. This can be relative to the path set in outDir.
+		    "mode": {													// Options for individual mode types
+		        "css": {												// Options for the CSS mode type
+		        	"dest": projectConfig.paths.src.sass + "/_objects", // Where to output generated CSS file containing SVG values - defaults to project config (_config/project.json) SASS path
+		        	"sprite": process.cwd() + '/' + projectConfig.paths.dest.svgs + '/svgsprite.svg', // Where to output generated SVG sprite file and what to name it - defaults to project config SVG destination and "svgsprite.svg"
+		            "render": {											// Stylesheet render options
+		            	"scss": { 										// Declare SASS rendering and options
+		            		'dest': "_objects.svgsprite.scss" 			// SASS file destination relative to mode dest with default filename "_objects.svgsprite.scss"
+		            	}
+		            },
+		           	"layout": "packed", 								// Layout of svg in the sprite
+		           	"prefix": ".svgsprite--%s", 						// Prefix for svg classes
+		           	"dimensions": "__dimensions", 						// Suffix for dimensions class e.g. .svgsprite--hamburger__dimensions
+		           	"bust": true 										// Cache busting
+		        }
+	    	}
+	    }
+	}
 ```
 
-#### Header 4
+### Mode settings
+
+### Mode type
+
+At the moment, cartridge-svgs only supports the `css` output mode. Support for `view`, `defs`, `symbol`, and `stack` is planned.
+
+Default mode is `css`
+```
+css: {
+```
+
+#### Destination
+
+Where to output generated files of the output type.
+
+Default path is `projectConfig.paths.src.sass + "/_objects"`. This path is the project config (`_config/project.json`) SASS src path, appended with an "/_objects" folder.
+
+```
+dest: projectConfig.paths.src.sass + "/_objects"
+```
+
+#### Sprite
+
+Where to output the generated sprite file.
+
+Default path is `process.cwd() + '/' + projectConfig.paths.dest.svgs + '/svgsprite.svg'`. This path is the project config (`_config/project.json`) SVG destination path, appended with the filename `svgsprite.svg`. Note the `process.cwd()`, required to change the directory from that set in the mode `dest` option in order to save SASS files to source folders and sprite files to public/destination folders.
+
+```
+sprite: process.cwd() + '/' + projectConfig.paths.dest.svgs + '/svgsprite.svg'
+```
+
+#### Render
+
+The render option allows you to specify how to render the CSS, for example, in SASS, LESS or Stylus. Currently cartridge-svgs only supports SASS.
+
+The render scss dest option defines where to output and what to name the SCSS file. This defaults to the mode destionation folder and the filename `_objects.svgsprite.scss`
+
+```
+dest: "_objects.svgsprite.scss"
+```
+
+#### Layout @TODO
+This is the layout of the items within the SVG file. However this option seems to have disappeared from svg-sprite.
+
+#### Prefix
+
+Prefix to give to the CSS class.
+
+Default is `.svgsprite--` 
+
+```
+prefix": ".svgsprite--%s"
+```
+
+#### Dimensions
+
+Suffix for the CSS dimensions class. Each SVG sprite element has width and height dimensions added to it in a CSS class. This option adds a suffix to this class.
+
+Default is `__dimensions`. With the default prefix and an SVG source file named `hamburger` this would result in .svgsprite--hamburger__dimensions`
+
+#### Bust
+
+Boolean option to set cache busting on or off.
+
+Defaults to true (cache busting on).
+
+```
+bust: true
+```
 
 ### Commit message standards [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 Try and adhere as closely as possible to the [Angular commit messages guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
