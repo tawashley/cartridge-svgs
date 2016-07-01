@@ -4,7 +4,7 @@
 
 function getTaskConfig(projectConfig) {
 	var taskConfig = {
-		svgSrc: projectConfig.paths.src.svgs + '**/*.svg', // Source of SVGs
+		svgSrc: projectConfig.paths.src.svgs + '**/*.svg',
 		outDir: '',
 
 		settings: {
