@@ -27,7 +27,7 @@ This module uses many of the same options that are available in the gulp-svg-spr
 
 Once installed, the config file `task.svgs.js` is created and stored in the _config directory in the root of your cartridge project. Use this file to alter the config of the module.
 
-# Default config options
+### Default config options
 
 ```
 var taskConfig = {
@@ -51,6 +51,8 @@ var taskConfig = {
     	},
 	};
 ```
+
+#### Header 4
 
 ### Commit message standards [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 Try and adhere as closely as possible to the [Angular commit messages guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
