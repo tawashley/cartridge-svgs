@@ -18,7 +18,7 @@ function getTaskConfig(projectConfig) {
           render: {
             scss: { // make it render scss and not css
               'dest': "_tools.svg-sprite.scss", // generated scss sprite file
-              'template': path.resolve(process.cwd(), projectConfig.paths.src.svgs, '/svg-sprite.tpl')
+              'template': path.resolve(process.cwd(), projectConfig.dirs.src, '/svg-sprite.tpl')
             }
           },
           layout: "packed", // default - layout of svg in the sprite
