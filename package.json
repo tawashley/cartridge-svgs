@@ -27,7 +27,7 @@
     "lint": "eslint task.js _config/*.js scripts/*.js"
   },
   "dependencies": {
-    "cartridge-module-util": "~0.4.0",
+    "cartridge-module-util": "~0.5.1",
     "yargs": "^4.3.2",
     "gulp-plumber": "1.1.0",
     "gulp-svg-sprite": "1.2.19",
