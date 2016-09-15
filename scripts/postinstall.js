@@ -35,6 +35,6 @@ cartridgeUtil.addToRc()
     return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
   })
   .then(function() {
-    cartridgeUtil.copyFileToProject('svg-sprite.tpl', path.join(config.dirs.src  + '/images/svgs'));
+    return cartridgeUtil.copyFileToProject('svg-sprite.tpl', '_source');
   })
   .then(cartridgeUtil.finishInstall);
